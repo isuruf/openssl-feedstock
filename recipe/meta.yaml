@@ -1,4 +1,4 @@
-{% set version = "1.1.1f" %}
+{% set version = "1.1.1g" %}
 
 package:
   name: openssl_split
@@ -6,7 +6,7 @@ package:
 
 source:
   url: http://www.openssl.org/source/openssl-{{ version }}.tar.gz
-  sha256: 186c6bfe6ecfba7a5b48c47f8a1673d0f3b0e5ba2e25602dd23b629975da3f35
+  sha256: ddb04774f1e32f0c49751e21b67216ac87852ceb056b75209af2443400636d46
   patches:
     - 0001-Don-t-use-USE_BCRYPTGENRANDOM-for-VS-older-than-2015.patch
 
