@@ -54,16 +54,18 @@ outputs:
         - touch checksum.txt           # [unix]
         - openssl sha256 checksum.txt
 
-  - name: libopenssl-static                   # [unix]
-    requirements:                             # [unix]
-      build:                                  # [unix]
-        - {{ compiler('c') }}                 # [unix]
+  - name: libopenssl-static
+    requirements:
+      build:
+        - {{ compiler('c') }}
     script: install_libopenssl-static.sh      # [unix]
-    test:                                     # [unix]
-      commands:                               # [unix]
-        - test -f ${PREFIX}/lib/libcrypto.a   # [unix]
-        - test -f ${PREFIX}/lib/libssl.a      # [unix]
-
+    script: install_libopenssl-static.bat     # [win]
+    test:
+      commands:
+        - test -f ${PREFIX}/lib/libcrypto.a                   # [unix]
+        - test -f ${PREFIX}/lib/libssl.a                      # [unix]
+        - if exist %LIBRARY_PREFIX%\lib\libcrypto_static.lib (exit 0) else (exit 1)  # [win]
+        - if exist %LIBRARY_PREFIX%\lib\libssl_static.lib (exit 0) else (exit 1)     # [win]
 
 about:
   home: http://www.openssl.org/
