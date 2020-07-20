@@ -11,7 +11,7 @@ source:
     - 0001-Don-t-use-USE_BCRYPTGENRANDOM-for-VS-older-than-2015.patch
 
 build:
-  number: 0
+  number: 1
 
 requirements:
     build:
