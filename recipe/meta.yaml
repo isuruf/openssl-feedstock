@@ -9,21 +9,22 @@ source:
   sha256: ddb04774f1e32f0c49751e21b67216ac87852ceb056b75209af2443400636d46
   patches:
     - 0001-Don-t-use-USE_BCRYPTGENRANDOM-for-VS-older-than-2015.patch
+    - gh12369.patch
 
 build:
   number: 1
 
 requirements:
-    build:
-      - {{ compiler('c') }}
-      - nasm               # [win]
-      - make               # [unix]
-      - perl               # [not win]
-    # Empty host section to ensure that this is identified as cb3
-    host:
-      # technically a build tool, but the windows makefile really wants to find it in the host env.
-      #    easier to do this than carry a patch.
-      - perl  # [win]
+  build:
+    - {{ compiler('c') }}
+    - nasm               # [win]
+    - make               # [unix]
+    - perl               # [not win]
+  # Empty host section to ensure that this is identified as cb3
+  host:
+    # technically a build tool, but the windows makefile really wants to find it in the host env.
+    #    easier to do this than carry a patch.
+    - perl  # [win]
 
 outputs:
   - name: openssl

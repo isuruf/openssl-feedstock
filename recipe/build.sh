@@ -9,41 +9,33 @@ _CONFIG_OPTS+=(threads)
 _CONFIG_OPTS+=(enable-ssl2)
 _CONFIG_OPTS+=(no-zlib)
 
-_BASE_CC=$(basename "${CC}")
-if [[ ${_BASE_CC} == *-* ]]; then
-  # We are cross-compiling or using a specific compiler.
-  # do not allow config to make any guesses based on uname.
-  _CONFIGURATOR="perl ./Configure"
-  case ${_BASE_CC} in
-    i?86-*linux*)
-      _CONFIG_OPTS+=(linux-generic32)
-      CFLAGS="${CFLAGS} -Wa,--noexecstack"
-      ;;
-    x86_64-*linux*)
-      _CONFIG_OPTS+=(linux-x86_64)
-      CFLAGS="${CFLAGS} -Wa,--noexecstack"
-      ;;
-    aarch64-*-linux*)
-      _CONFIG_OPTS+=(linux-aarch64)
-      CFLAGS="${CFLAGS} -Wa,--noexecstack"
-      ;;
-    *powerpc64le-*linux*)
-      _CONFIG_OPTS+=(linux-ppc64le)
-      CFLAGS="${CFLAGS} -Wa,--noexecstack"
-      ;;
-    *darwin*)
-      _CONFIG_OPTS+=(darwin64-x86_64-cc)
-      ;;
-  esac
-else
-  if [[ $(uname) == Darwin ]]; then
+# We are cross-compiling or using a specific compiler.
+# do not allow config to make any guesses based on uname.
+_CONFIGURATOR="perl ./Configure"
+case "$target_platform" in
+  linux-32)
+    _CONFIG_OPTS+=(linux-generic32)
+    CFLAGS="${CFLAGS} -Wa,--noexecstack"
+    ;;
+  linux-64)
+    _CONFIG_OPTS+=(linux-x86_64)
+    CFLAGS="${CFLAGS} -Wa,--noexecstack"
+    ;;
+  linux-aarch64)
+    _CONFIG_OPTS+=(linux-aarch64)
+    CFLAGS="${CFLAGS} -Wa,--noexecstack"
+    ;;
+  linux-ppc64le)
+    _CONFIG_OPTS+=(linux-ppc64le)
+    CFLAGS="${CFLAGS} -Wa,--noexecstack"
+    ;;
+  osx-64)
     _CONFIG_OPTS+=(darwin64-x86_64-cc)
-    _CONFIGURATOR="perl ./Configure"
-  else
-    # Use config, which is a config.guess-like wrapper around Configure
-    _CONFIGURATOR=./config
-  fi
-fi
+    ;;
+  osx-arm64)
+    _CONFIG_OPTS+=(darwin64-arm64-cc)
+    ;;
+esac
 
 CC=${CC}" ${CPPFLAGS} ${CFLAGS}" \
   ${_CONFIGURATOR} ${_CONFIG_OPTS[@]} ${LDFLAGS}
@@ -69,7 +61,7 @@ rm test/recipes/04-test_err.t
 # When testing this via QEMU, even though it ends printing:
 # "ALL TESTS SUCCESSFUL."
 # .. it exits with a failure code.
-if [[ "${HOST}" == "${BUILD}" ]]; then
+if [[ "${CONDA_BUILD_CROSS_COMPILATION}" != "1" ]]; then
   make test > testsuite.log 2>&1 || true
   if ! cat testsuite.log | grep -i "all tests successful"; then
     echo "Testsuite failed!  See $(pwd)/testsuite.log for more info."
