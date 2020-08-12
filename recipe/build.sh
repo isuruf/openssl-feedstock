@@ -21,7 +21,7 @@ case "$target_platform" in
     _CONFIG_OPTS+=(linux-x86_64)
     CFLAGS="${CFLAGS} -Wa,--noexecstack"
     ;;
-  linux-arch64)
+  linux-aarch64)
     _CONFIG_OPTS+=(linux-aarch64)
     CFLAGS="${CFLAGS} -Wa,--noexecstack"
     ;;
