@@ -31,9 +31,10 @@ case "$target_platform" in
     ;;
   osx-64)
     _CONFIG_OPTS+=(darwin64-x86_64-cc)
+    ;;
   osx-arm64)
     _CONFIG_OPTS+=(darwin64-arm64-cc)
-  ;;
+    ;;
 esac
 
 CC=${CC}" ${CPPFLAGS} ${CFLAGS}" \
