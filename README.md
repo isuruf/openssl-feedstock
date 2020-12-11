@@ -5,11 +5,13 @@ Home: http://www.openssl.org/
 
 Package license: OpenSSL
 
-Feedstock license: BSD-3-Clause
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/openssl-feedstock/blob/master/LICENSE.txt)
 
 Summary: OpenSSL is an open-source implementation of the SSL and TLS protocols
 
+Development: https://github.com/openssl/openssl
 
+Documentation: https://www.openssl.org/docs/man1.1.1/
 
 Current build status
 ====================
