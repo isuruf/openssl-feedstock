@@ -9,7 +9,6 @@ source:
   sha256: e8be6a35fe41d10603c3cc635e93289ed00bf34b79671a3a4de64fcee00d5242
   patches:
     - 0001-Don-t-use-USE_BCRYPTGENRANDOM-for-VS-older-than-2015.patch
-    - gh12369.patch
 
 build:
   number: 0
