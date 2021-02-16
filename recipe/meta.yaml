@@ -1,4 +1,4 @@
-{% set version = "1.1.1i" %}
+{% set version = "1.1.1j" %}
 
 package:
   name: openssl_split
@@ -6,7 +6,7 @@ package:
 
 source:
   url: http://www.openssl.org/source/openssl-{{ version }}.tar.gz
-  sha256: e8be6a35fe41d10603c3cc635e93289ed00bf34b79671a3a4de64fcee00d5242
+  sha256: aaf2fcb575cdf6491b98ab4829abf78a3dec8402b8b81efc8f23c00d443981bf
   patches:
     - 0001-Don-t-use-USE_BCRYPTGENRANDOM-for-VS-older-than-2015.patch
 
@@ -28,8 +28,8 @@ requirements:
 outputs:
   - name: openssl
     build:
-      no_link: lib/libcrypto.so.1.1        # [linux]
-      no_link: lib/libcrypto.1.1.dylib     # [osx]
+      no_link: lib/libcrypto.so.1.1  # [linux]
+      no_link: lib/libcrypto.1.1.dylib  # [osx]
       run_exports:
         # openssl's versioning is X.Y.Z(rev), where rev is really the patch release ID
         #    This pin allows the patch release to be >= the build-time openssl version.
@@ -46,8 +46,8 @@ outputs:
         - perl  # [win]
       run:
         - ca-certificates
-    script: install_openssl.sh    # [unix]
-    script: install_openssl.bat   # [win]
+    script: install_openssl.sh  # [unix]
+    script: install_openssl.bat  # [win]
     test:
       commands:
         - copy NUL checksum.txt        # [win]
@@ -58,8 +58,8 @@ outputs:
     requirements:
       build:
         - {{ compiler('c') }}
-    script: install_libopenssl-static.sh      # [unix]
-    script: install_libopenssl-static.bat     # [win]
+    script: install_libopenssl-static.sh  # [unix]
+    script: install_libopenssl-static.bat  # [win]
     test:
       commands:
         - test -f ${PREFIX}/lib/libcrypto.a                   # [unix]
