@@ -11,7 +11,7 @@ channel_targets:
 macos_machine:
 - x86_64-apple-darwin13.4.0
 perl:
-- 5.26.2
+- 5.32.1
 pin_run_as_build:
   perl:
     max_pin: x.x.x
