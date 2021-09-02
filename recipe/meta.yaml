@@ -9,6 +9,8 @@ source:
   sha256: 0b7a3e5e59c34827fe0c3a74b7ec8baef302b98fa80088d7f9153aa16fa76bd1
   patches:
     - patches/0001-Don-t-use-USE_BCRYPTGENRANDOM-for-VS-older-than-2015.patch
+    # backport of https://github.com/openssl/openssl/pull/16409; can be dropped for ver >1.1.1l
+    - patches/0002-Darwin-platform-allows-to-build-on-releases-before-Y.patch
 
 build:
   number: 0
