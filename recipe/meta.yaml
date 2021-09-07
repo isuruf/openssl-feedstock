@@ -12,21 +12,15 @@ source:
 
 build:
   number: 0
-  ignore_run_exports_from:
-    # For "perl" in "requirements/host" on windows, see below.
-    - perl *
 
 requirements:
   build:
     - {{ compiler('c') }}
     - nasm               # [win]
     - make               # [unix]
-    - perl *             # [not win]
+    - perl
   # Empty host section to ensure that this is identified as cb3
   host:
-    # technically a build tool, but the windows makefile really wants to find it in the host env.
-    #    easier to do this than carry a patch.
-    - perl *  # [win]
 
 outputs:
   - name: openssl
@@ -37,19 +31,13 @@ outputs:
         # openssl's versioning used to be X.Y.Z(rev), but is MAJOR.MINOR.PATCH since 3.0.0;
         # see https://www.openssl.org/policies/releasestrat.html
         - {{ pin_subpackage('openssl', max_pin='x') }}
-      ignore_run_exports_from:
-        # For "perl" in "requirements/host" on windows, see below.
-        - perl *
     requirements:
       build:
         - {{ compiler('c') }}
         - make
-        - perl *             # [not win]
+        - perl
       # Empty host section to ensure that this is identified as cb3
       host:
-        # technically a build tool, but the windows makefile really wants to find it in the host env.
-        #    easier to do this than carry a patch.
-        - perl *  # [win]
       run:
         - ca-certificates
     script: install_openssl.sh  # [unix]
