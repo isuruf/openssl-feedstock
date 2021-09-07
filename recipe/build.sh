@@ -54,10 +54,6 @@ CC=${CC}" ${CPPFLAGS} ${CFLAGS}" \
 # make -j${CPU_COUNT} ${VERBOSE_AT}
 make -j${CPU_COUNT}
 
-# expected error: https://github.com/openssl/openssl/issues/6953
-#    OK to ignore: https://github.com/openssl/openssl/issues/6953#issuecomment-415428340
-rm test/recipes/04-test_err.t
-
 if [[ "${CONDA_BUILD_CROSS_COMPILATION}" != "1" ]]; then
   make test
 fi
