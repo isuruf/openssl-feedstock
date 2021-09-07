@@ -9,18 +9,9 @@ perl configure %OSSL_CONFIGURE% --prefix=%LIBRARY_PREFIX% --openssldir=%LIBRARY_
 if errorlevel 1 exit 1
 
 REM Build step
-rem if "%ARCH%"=="64" (
-rem     ml64 -c -Foms\uptable.obj ms\uptable.asm
-rem     if errorlevel 1 exit 1
-rem )
-
 nmake
 if errorlevel 1 exit 1
 
-rem nmake -f ms\nt.mak
-rem if errorlevel 1 exit 1
-rem nmake -f ms\ntdll.mak
-rem if errorlevel 1 exit 1
-
+REM Testing step
 nmake test
 if errorlevel 1 exit 1
