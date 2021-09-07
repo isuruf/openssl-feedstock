@@ -1,4 +1,4 @@
-{% set version = "1.1.1l" %}
+{% set version = "3.0.0" %}
 
 package:
   name: openssl_split
@@ -6,7 +6,7 @@ package:
 
 source:
   url: http://www.openssl.org/source/openssl-{{ version }}.tar.gz
-  sha256: 0b7a3e5e59c34827fe0c3a74b7ec8baef302b98fa80088d7f9153aa16fa76bd1
+  sha256: 59eedfcb46c25214c9bd37ed6078297b4df01d012267fe9e9eee31f61bc70536
   patches:
     - patches/0001-Don-t-use-USE_BCRYPTGENRANDOM-for-VS-older-than-2015.patch
     # backport of https://github.com/openssl/openssl/pull/16409; can be dropped for ver >1.1.1l
