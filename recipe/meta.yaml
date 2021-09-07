@@ -31,12 +31,12 @@ requirements:
 outputs:
   - name: openssl
     build:
-      no_link: lib/libcrypto.so.1.1  # [linux]
-      no_link: lib/libcrypto.1.1.dylib  # [osx]
+      no_link: lib/libcrypto.so.3.0     # [linux]
+      no_link: lib/libcrypto.3.0.dylib  # [osx]
       run_exports:
-        # openssl's versioning is X.Y.Z(rev), where rev is really the patch release ID
-        #    This pin allows the patch release to be >= the build-time openssl version.
-        - {{ pin_subpackage('openssl', max_pin='x.x.x') }}
+        # openssl's versioning used to be X.Y.Z(rev), but is MAJOR.MINOR.PATCH since 3.0.0;
+        # see https://www.openssl.org/policies/releasestrat.html
+        - {{ pin_subpackage('openssl', max_pin='x') }}
       ignore_run_exports_from:
         # For "perl" in "requirements/host" on windows, see below.
         - perl *
@@ -80,7 +80,7 @@ about:
   license_family: Apache
   summary: OpenSSL is an open-source implementation of the SSL and TLS protocols
   dev_url: https://github.com/openssl/openssl
-  doc_url: https://www.openssl.org/docs/man1.1.1/
+  doc_url: https://www.openssl.org/docs/man3.0/
 
 extra:
   recipe-maintainers:
