@@ -76,7 +76,7 @@ outputs:
 about:
   home: http://www.openssl.org/
   license_file: LICENSE
-  license: OpenSSL
+  license: Apache-2.0
   license_family: Apache
   summary: OpenSSL is an open-source implementation of the SSL and TLS protocols
   dev_url: https://github.com/openssl/openssl
