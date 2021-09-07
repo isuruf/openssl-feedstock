@@ -40,18 +40,6 @@ esac
 CC=${CC}" ${CPPFLAGS} ${CFLAGS}" \
   ${_CONFIGURATOR} ${_CONFIG_OPTS[@]} ${LDFLAGS}
 
-# This is not working yet. It may be important if we want to perform a parallel build
-# as enabled by openssl-1.0.2d-parallel-build.patch where the dependency info is old.
-# makedepend is a tool from xorg, but it seems to be little more than a wrapper for
-# '${CC} -M', so my plan is to replace it with that, or add a package for it? This
-# tool uses xorg headers (and maybe libraries) which is unfortunate.
-# http://stackoverflow.com/questions/6362705/replacing-makedepend-with-cc-mm
-# echo "echo \$*" > "${SRC_DIR}"/makedepend
-# echo "${CC} -M $(echo \"\$*\" | sed s'# --##g')" >> "${SRC_DIR}"/makedepend
-# chmod +x "${SRC_DIR}"/makedepend
-# PATH=${SRC_DIR}:${PATH} make -j1 depend
-
-# make -j${CPU_COUNT} ${VERBOSE_AT}
 make -j${CPU_COUNT}
 
 if [[ "${CONDA_BUILD_CROSS_COMPILATION}" != "1" ]]; then
