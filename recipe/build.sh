@@ -13,10 +13,6 @@ _CONFIG_OPTS+=(no-zlib)
 # do not allow config to make any guesses based on uname.
 _CONFIGURATOR="perl ./Configure"
 case "$target_platform" in
-  linux-32)
-    _CONFIG_OPTS+=(linux-generic32)
-    CFLAGS="${CFLAGS} -Wa,--noexecstack"
-    ;;
   linux-64)
     _CONFIG_OPTS+=(linux-x86_64)
     CFLAGS="${CFLAGS} -Wa,--noexecstack"
