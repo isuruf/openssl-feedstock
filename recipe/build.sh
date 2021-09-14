@@ -41,6 +41,9 @@ esac
 CC=${CC}" ${CPPFLAGS} ${CFLAGS}" \
   ${_CONFIGURATOR} ${_CONFIG_OPTS[@]} ${LDFLAGS}
 
+# specify in metadata where the packaging is coming from
+export OPENSSL_VERSION_BUILD_METADATA="+fips+conda_forge"
+
 make -j${CPU_COUNT}
 
 if [[ "${CONDA_BUILD_CROSS_COMPILATION}" != "1" ]]; then

@@ -11,6 +11,9 @@ perl configure %OSSL_CONFIGURE% ^
     enable-fips
 if errorlevel 1 exit 1
 
+REM specify in metadata where the packaging is coming from
+set "OPENSSL_VERSION_BUILD_METADATA=+fips+conda_forge"
+
 REM Build step
 nmake
 if errorlevel 1 exit 1
