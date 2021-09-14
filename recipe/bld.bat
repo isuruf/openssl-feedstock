@@ -7,7 +7,8 @@ if "%ARCH%"=="32" (
 REM Configure step
 perl configure %OSSL_CONFIGURE% ^
     --prefix=%LIBRARY_PREFIX% ^
-    --openssldir=%LIBRARY_PREFIX%
+    --openssldir=%LIBRARY_PREFIX% ^
+    enable-fips
 if errorlevel 1 exit 1
 
 REM Build step

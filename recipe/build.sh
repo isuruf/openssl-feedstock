@@ -4,6 +4,7 @@ PERL=${PREFIX}/bin/perl
 declare -a _CONFIG_OPTS
 _CONFIG_OPTS+=(--libdir=lib)
 _CONFIG_OPTS+=(--prefix=${PREFIX})
+_CONFIG_OPTS+=(enable-fips)
 _CONFIG_OPTS+=(enable-ssl2)
 _CONFIG_OPTS+=(no-zlib)
 _CONFIG_OPTS+=(shared)
