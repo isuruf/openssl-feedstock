@@ -1,7 +1,7 @@
 From 316f8d9967936c184ea8067534500be02a6211ff Mon Sep 17 00:00:00 2001
 From: Jonathan Helmus <jjhelmus@gmail.com>
 Date: Wed, 6 Nov 2019 14:13:24 -0600
-Subject: [PATCH] Don't use USE_BCRYPTGENRANDOM for VS older than 2015
+Subject: [PATCH 1/2] Don't use USE_BCRYPTGENRANDOM for VS older than 2015
 
 ---
  providers/implementations/rands/seeding/rand_win.c | 2 +-

@@ -38,10 +38,6 @@ CC=${CC}" ${CPPFLAGS} ${CFLAGS}" \
 
 make -j${CPU_COUNT}
 
-# unset HTTP_PROXY variable that otherwise causes cmp_http tests to fail;
-# see https://github.com/openssl/openssl/issues/16546
-unset HTTP_PROXY
-
 if [[ "${CONDA_BUILD_CROSS_COMPILATION}" != "1" ]]; then
   echo "Running tests"
   make test
