@@ -10,6 +10,10 @@ _CONFIG_OPTS+=(no-zlib)
 _CONFIG_OPTS+=(shared)
 _CONFIG_OPTS+=(threads)
 
+if [[ "$target_platform" = "linux-"* ]]; then
+  _CONFIG_OPTS+=(enable-ktls)
+fi
+
 # We are cross-compiling or using a specific compiler.
 # do not allow config to make any guesses based on uname.
 _CONFIGURATOR="perl ./Configure"
