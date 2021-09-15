@@ -20,7 +20,7 @@ requirements:
     - {{ compiler('c') }}
     - nasm               # [win]
     - make               # [unix]
-    - perl
+    - perl *
   # Empty host section to ensure that this is identified as cb3
   host:
 
@@ -37,7 +37,7 @@ outputs:
       build:
         - {{ compiler('c') }}
         - make
-        - perl
+        - perl *
       # Empty host section to ensure that this is identified as cb3
       host:
       run:
