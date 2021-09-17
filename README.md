@@ -3,7 +3,7 @@ About openssl_split
 
 Home: http://www.openssl.org/
 
-Package license: OpenSSL
+Package license: Apache-2.0
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/openssl-feedstock/blob/master/LICENSE.txt)
 
@@ -11,7 +11,7 @@ Summary: OpenSSL is an open-source implementation of the SSL and TLS protocols
 
 Development: https://github.com/openssl/openssl
 
-Documentation: https://www.openssl.org/docs/man1.1.1/
+Documentation: https://www.openssl.org/docs/man3.0/
 
 Current build status
 ====================
