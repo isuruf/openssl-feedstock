@@ -46,7 +46,7 @@ export OPENSSL_VERSION_BUILD_METADATA="+fips+conda_forge"
 
 make -j${CPU_COUNT}
 
-if [[ "${CONDA_BUILD_CROSS_COMPILATION}" != "1" ]]; then
+if [[ "${CONDA_BUILD_CROSS_COMPILATION}" != "1" ]] || [[ "$(uname -s)" = "Linux" && "$target_platform" = "linux-"* ]]; then
   echo "Running tests"
   make test
 fi
