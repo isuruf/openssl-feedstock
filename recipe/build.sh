@@ -47,6 +47,15 @@ export OPENSSL_VERSION_BUILD_METADATA="+fips+conda_forge"
 make -j${CPU_COUNT}
 
 if [[ "${CONDA_BUILD_CROSS_COMPILATION}" != "1" ]] || [[ "$(uname -s)" = "Linux" && "$target_platform" = "linux-"* ]]; then
+  if [[ "${CONDA_BUILD_CROSS_COMPILATION}" = "1" ]]; then
+      # This test fails when cross-compiling and using emulation for the tests
+      # > In a cross compiled situation, there are chances that our
+      # > application is linked against different C libraries than
+      # > perl, and may thereby get different error messages for the
+      # > same error.
+      # See: https://github.com/openssl/openssl/blob/openssl-3.0.0/test/recipes/02-test_errstr.t#L20-L26
+      rm ./test/recipes/02-test_errstr.t
+  fi
   echo "Running tests"
   make test
 fi
