@@ -13,7 +13,9 @@ build:
 
 requirements:
   build:
-    - {{ compiler('c') }}
+    - {{ compiler('c') }}  # [not osx]
+    # Break circular dependency openssl -> clang -> ld64 -> sigtool -> openssl
+    - {{ compiler('clang_bootstrap') }}  # [osx]
     - nasm               # [win]
     - make               # [unix]
     - perl *
@@ -31,7 +33,9 @@ outputs:
         - {{ pin_subpackage('openssl', max_pin='x') }}
     requirements:
       build:
-        - {{ compiler('c') }}
+        - {{ compiler('c') }}  # [not osx]
+        # Break circular dependency openssl -> clang -> ld64 -> sigtool -> openssl
+        - {{ compiler('clang_bootstrap') }}  # [osx]
         - make
         - perl *
       # Empty host section to ensure that this is identified as cb3
@@ -49,7 +53,9 @@ outputs:
   - name: libopenssl-static
     requirements:
       build:
-        - {{ compiler('c') }}
+        - {{ compiler('c') }}  # [not osx]
+        # Break circular dependency openssl -> clang -> ld64 -> sigtool -> openssl
+        - {{ compiler('clang_bootstrap') }}  # [osx]
     script: install_libopenssl-static.sh  # [unix]
     script: install_libopenssl-static.bat  # [win]
     test:
