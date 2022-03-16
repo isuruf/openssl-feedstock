@@ -7,6 +7,9 @@ package:
 source:
   url: http://www.openssl.org/source/openssl-{{ version }}.tar.gz
   sha256: 98e91ccead4d4756ae3c9cde5e09191a8e586d9f4d50838e7ec09d6411dfdb63
+  patches:
+    # backport https://github.com/openssl/openssl/pull/17901
+    - patches/gh17901.patch
 
 build:
   number: 0
