@@ -7,13 +7,6 @@ package:
 source:
   url: http://www.openssl.org/source/openssl-{{ version }}.tar.gz
   sha256: 98e91ccead4d4756ae3c9cde5e09191a8e586d9f4d50838e7ec09d6411dfdb63
-  patches:
-    # backport from openssl/openssl#16593 to simplify & future-proof build;
-    # can be dropped for any version after 3.0.0
-    - patches/0001-80-test_cmp_http.t-Fix-handling-of-empty-HTTP-proxy-.patch
-    # backport from openssl/openssl#16577, can be dropped for any version after 3.0.0
-    # needed to have applink.c in include/openssl (e.g. necessary for python)
-    - patches/0002-Fix-the-build-file-templates-where-uplink-matters.patch
 
 build:
   number: 0
