@@ -1,5 +1,5 @@
-About openssl_split
-===================
+About openssl
+=============
 
 Home: http://www.openssl.org/
 
@@ -88,10 +88,10 @@ Current release info
 | [![Conda Recipe](https://img.shields.io/badge/recipe-libopenssl--static-green.svg)](https://anaconda.org/conda-forge/libopenssl-static) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/libopenssl-static.svg)](https://anaconda.org/conda-forge/libopenssl-static) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/libopenssl-static.svg)](https://anaconda.org/conda-forge/libopenssl-static) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/libopenssl-static.svg)](https://anaconda.org/conda-forge/libopenssl-static) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-openssl-green.svg)](https://anaconda.org/conda-forge/openssl) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/openssl.svg)](https://anaconda.org/conda-forge/openssl) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/openssl.svg)](https://anaconda.org/conda-forge/openssl) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/openssl.svg)](https://anaconda.org/conda-forge/openssl) |
 
-Installing openssl_split
-========================
+Installing openssl
+==================
 
-Installing `openssl_split` from the `conda-forge` channel can be achieved by adding `conda-forge` to your channels with:
+Installing `openssl` from the `conda-forge` channel can be achieved by adding `conda-forge` to your channels with:
 
 ```
 conda config --add channels conda-forge
@@ -150,17 +150,17 @@ Terminology
                   produce the finished article (built conda distributions)
 
 
-Updating openssl_split-feedstock
-================================
+Updating openssl-feedstock
+==========================
 
-If you would like to improve the openssl_split recipe or build a new
+If you would like to improve the openssl recipe or build a new
 package version, please fork this repository and submit a PR. Upon submission,
 your changes will be run on the appropriate platforms to give the reviewer an
 opportunity to confirm that the changes result in a successful build. Once
 merged, the recipe will be re-built and uploaded automatically to the
 `conda-forge` channel, whereupon the built conda packages will be available for
 everybody to install and use from the `conda-forge` channel.
-Note that all branches in the conda-forge/openssl_split-feedstock are
+Note that all branches in the conda-forge/openssl-feedstock are
 immediately built and any created packages are uploaded, so PRs should be based
 on branches in forks and branches in the main repository should only be used to
 build distinct package versions.
