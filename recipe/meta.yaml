@@ -1,4 +1,4 @@
-{% set version = "3.0.0" %}
+{% set version = "3.0.2" %}
 
 package:
   name: openssl_split
@@ -6,21 +6,16 @@ package:
 
 source:
   url: http://www.openssl.org/source/openssl-{{ version }}.tar.gz
-  sha256: 59eedfcb46c25214c9bd37ed6078297b4df01d012267fe9e9eee31f61bc70536
-  patches:
-    # backport from openssl/openssl#16593 to simplify & future-proof build;
-    # can be dropped for any version after 3.0.0
-    - patches/0001-80-test_cmp_http.t-Fix-handling-of-empty-HTTP-proxy-.patch
-    # backport from openssl/openssl#16577, can be dropped for any version after 3.0.0
-    # needed to have applink.c in include/openssl (e.g. necessary for python)
-    - patches/0002-Fix-the-build-file-templates-where-uplink-matters.patch
+  sha256: 98e91ccead4d4756ae3c9cde5e09191a8e586d9f4d50838e7ec09d6411dfdb63
 
 build:
-  number: 2
+  number: 0
 
 requirements:
   build:
-    - {{ compiler('c') }}
+    - {{ compiler('c') }}  # [not osx]
+    # Break circular dependency openssl -> clang -> ld64 -> sigtool -> openssl
+    - clang_bootstrap_{{ target_platform }} {{ c_compiler_version }}.*  # [osx]
     - nasm               # [win]
     - make               # [unix]
     - perl *
@@ -30,7 +25,7 @@ requirements:
 outputs:
   - name: openssl
     build:
-      no_link: lib/libcrypto.so.3.0     # [linux]
+      no_link: lib/libcrypto.so.3.0  # [linux]
       no_link: lib/libcrypto.3.0.dylib  # [osx]
       run_exports:
         # openssl's versioning used to be X.Y.Z(rev), but is MAJOR.MINOR.PATCH since 3.0.0;
@@ -38,7 +33,9 @@ outputs:
         - {{ pin_subpackage('openssl', max_pin='x') }}
     requirements:
       build:
-        - {{ compiler('c') }}
+        - {{ compiler('c') }}  # [not osx]
+        # Break circular dependency openssl -> clang -> ld64 -> sigtool -> openssl
+        - clang_bootstrap_{{ target_platform }} {{ c_compiler_version }}.*  # [osx]
         - make
         - perl *
       # Empty host section to ensure that this is identified as cb3
@@ -56,7 +53,9 @@ outputs:
   - name: libopenssl-static
     requirements:
       build:
-        - {{ compiler('c') }}
+        - {{ compiler('c') }}  # [not osx]
+        # Break circular dependency openssl -> clang -> ld64 -> sigtool -> openssl
+        - clang_bootstrap_{{ target_platform }} {{ c_compiler_version }}.*  # [osx]
     script: install_libopenssl-static.sh  # [unix]
     script: install_libopenssl-static.bat  # [win]
     test:
@@ -82,3 +81,4 @@ extra:
     - ocefpaf
     - pelson
     - carlodri
+  feedstock-name: openssl
