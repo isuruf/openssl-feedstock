@@ -48,8 +48,8 @@ outputs:
       commands:
         - copy NUL checksum.txt        # [win]
         - touch checksum.txt           # [unix]
-        - $PREFIX/bin/openssl sha256 checksum.txt     # [unix]
-        - %LIBRARY_BIN%\\openssl sha256 checksum.txt  # [win]
+        - "$PREFIX/bin/openssl sha256 checksum.txt"     # [unix]
+        - "%LIBRARY_BIN%\\openssl sha256 checksum.txt"  # [win]
 
   - name: libopenssl-static
     requirements:
