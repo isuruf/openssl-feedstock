@@ -13,9 +13,7 @@ build:
 
 requirements:
   build:
-    - {{ compiler('c') }}  # [not osx]
-    # Break circular dependency openssl -> clang -> ld64 -> sigtool -> openssl
-    - clang_bootstrap_{{ target_platform }} {{ c_compiler_version }}.*  # [osx]
+    - {{ compiler('c') }}
     - nasm               # [win]
     - make               # [unix]
     - perl *
