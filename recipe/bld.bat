@@ -8,6 +8,7 @@ REM Configure step
 perl configure %OSSL_CONFIGURE% ^
     --prefix=%LIBRARY_PREFIX% ^
     --openssldir=%LIBRARY_PREFIX% ^
+    enable-legacy ^
     shared ^
     enable-fips
 if errorlevel 1 exit 1
