@@ -5,11 +5,12 @@ if "%ARCH%"=="32" (
 )
 
 REM Configure step
-perl configure %OSSL_CONFIGURE% ^
-    --prefix=%LIBRARY_PREFIX% ^
+perl configure %OSSL_CONFIGURE%   ^
+    --prefix=%LIBRARY_PREFIX%     ^
     --openssldir=%LIBRARY_PREFIX% ^
-    enable-legacy ^
-    shared ^
+    no-module                     ^
+    enable-legacy                 ^
+    shared                        ^
     enable-fips
 if errorlevel 1 exit 1
 
