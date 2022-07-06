@@ -7,9 +7,6 @@ package:
 source:
   url: http://www.openssl.org/source/openssl-{{ version }}.tar.gz
   sha256: aa7d8d9bef71ad6525c55ba11e5f4397889ce49c2c9349dcea6d3e4f0b024a7a
-  patches:
-    # backport fix for https://github.com/openssl/openssl/issues/18625
-    - patches/GH18626.patch
 
 build:
   number: 0
