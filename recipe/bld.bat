@@ -8,10 +8,11 @@ REM Configure step
 perl configure %OSSL_CONFIGURE%   ^
     --prefix=%LIBRARY_PREFIX%     ^
     --openssldir=%LIBRARY_PREFIX% ^
-    no-module                     ^
     enable-legacy                 ^
-    shared                        ^
-    no-fips
+    no-fips                       ^
+    no-module                     ^
+    pic                           ^
+    shared
 if %ERRORLEVEL% neq 0 exit 1
 
 REM specify in metadata where the packaging is coming from
