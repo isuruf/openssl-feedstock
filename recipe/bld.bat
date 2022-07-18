@@ -11,11 +11,11 @@ perl configure %OSSL_CONFIGURE%   ^
     no-module                     ^
     enable-legacy                 ^
     shared                        ^
-    enable-fips
+    no-fips
 if errorlevel 1 exit 1
 
 REM specify in metadata where the packaging is coming from
-set "OPENSSL_VERSION_BUILD_METADATA=+fips+conda_forge"
+set "OPENSSL_VERSION_BUILD_METADATA=+conda_forge"
 
 REM Build step
 nmake
