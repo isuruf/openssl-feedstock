@@ -11,7 +11,6 @@ perl configure %OSSL_CONFIGURE%   ^
     enable-legacy                 ^
     no-fips                       ^
     no-module                     ^
-    pic                           ^
     shared                        ^
     zlib-dynamic
 if %ERRORLEVEL% neq 0 exit 1
