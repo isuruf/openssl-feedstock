@@ -7,9 +7,9 @@ _CONFIG_OPTS+=(--prefix=${PREFIX})
 _CONFIG_OPTS+=(enable-legacy)
 _CONFIG_OPTS+=(no-fips)
 _CONFIG_OPTS+=(no-module)
+_CONFIG_OPTS+=(no-zlib)
 _CONFIG_OPTS+=(shared)
 _CONFIG_OPTS+=(threads)
-_CONFIG_OPTS+=(zlib-dynamic)
 
 if [[ "$target_platform" = "linux-"* ]]; then
   _CONFIG_OPTS+=(enable-ktls)

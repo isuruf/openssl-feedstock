@@ -17,8 +17,8 @@ requirements:
     - nasm               # [win]
     - make               # [unix]
     - perl *
+  # Empty host section to ensure that this is identified as cb3
   host:
-    - zlib
 
 outputs:
   - name: openssl
@@ -34,8 +34,10 @@ outputs:
         - {{ compiler('c') }}
         - make
         - perl *
+      # Empty host section to ensure that this is identified as cb3
+      # FIXME: this doesn't seem to be enough. We need a compiler in build
+      # with `compiler` jinja used to not use legacy cb2 build==host
       host:
-        - zlib
       run:
         - ca-certificates
     script: install_openssl.sh  # [unix]

@@ -11,8 +11,8 @@ perl configure %OSSL_CONFIGURE%   ^
     enable-legacy                 ^
     no-fips                       ^
     no-module                     ^
-    shared                        ^
-    zlib-dynamic
+    no-zlib                       ^
+    shared
 if %ERRORLEVEL% neq 0 exit 1
 
 REM specify in metadata where the packaging is coming from
