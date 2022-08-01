@@ -1,5 +1,5 @@
 nmake install
-if errorlevel 1 exit 1
+if %ERRORLEVEL% neq 0 exit 1
 
 :: don't include html docs that get installed
 rd /s /q %LIBRARY_PREFIX%\html
