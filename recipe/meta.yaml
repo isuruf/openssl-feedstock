@@ -77,4 +77,5 @@ extra:
     - msarahan
     - ocefpaf
     - pelson
+    - h-vetinari
   feedstock-name: openssl
