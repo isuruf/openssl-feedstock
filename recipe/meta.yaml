@@ -43,6 +43,7 @@ outputs:
       host:
       run:
         - ca-certificates
+        - ucrt             # [win]
     test:
       requires:
         - pkg-config
