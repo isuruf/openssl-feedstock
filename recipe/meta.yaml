@@ -22,6 +22,8 @@ requirements:
 
 outputs:
   - name: openssl
+    script: install_openssl.sh   # [unix]
+    script: install_openssl.bat  # [win]
     build:
       no_link: lib/libcrypto.so.3.0  # [linux]
       no_link: lib/libcrypto.3.0.dylib  # [osx]
@@ -40,8 +42,6 @@ outputs:
       host:
       run:
         - ca-certificates
-    script: install_openssl.sh  # [unix]
-    script: install_openssl.bat  # [win]
     test:
       commands:
         - copy NUL checksum.txt        # [win]
@@ -50,11 +50,11 @@ outputs:
         - '%LIBRARY_BIN%\openssl sha256 checksum.txt'   # [win]
 
   - name: libopenssl-static
+    script: install_libopenssl-static.sh   # [unix]
+    script: install_libopenssl-static.bat  # [win]
     requirements:
       build:
         - {{ compiler('c') }}
-    script: install_libopenssl-static.sh  # [unix]
-    script: install_libopenssl-static.bat  # [win]
     test:
       commands:
         - test -f ${PREFIX}/lib/libcrypto.a                   # [unix]
