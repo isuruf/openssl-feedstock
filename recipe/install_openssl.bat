@@ -1,8 +1,21 @@
+@echo on
+setlocal enabledelayedexpansion
+
 nmake install
 if %ERRORLEVEL% neq 0 exit 1
 
 :: don't include html docs that get installed
 rd /s /q %LIBRARY_PREFIX%\html
+
+:: install pkgconfig metadata (useful for downstream packages);
+:: adapted from inspecting the conda-forge .pc files for unix, as well as
+:: https://github.com/microsoft/vcpkg/blob/master/ports/openssl/install-pc-files.cmake
+mkdir %LIBRARY_PREFIX%\lib\pkgconfig
+for %%F in (openssl libssl libcrypto) DO (
+    copy %RECIPE_DIR%\win_pkgconfig\%%F.pc.in %LIBRARY_PREFIX%\lib\pkgconfig\%%F.pc
+    sed -i "s|@PREFIX@|%LIBRARY_PREFIX:\=/%|g" %LIBRARY_PREFIX%\lib\pkgconfig\%%F.pc
+    sed -i "s|@VERSION@|%PKG_VERSION%|g" %LIBRARY_PREFIX%\lib\pkgconfig\%%F.pc
+)
 
 REM Install step
 rem copy out32dll\openssl.exe %PREFIX%\openssl.exe
