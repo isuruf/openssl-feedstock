@@ -12,9 +12,10 @@ rd /s /q %LIBRARY_PREFIX%\html
 :: https://github.com/microsoft/vcpkg/blob/master/ports/openssl/install-pc-files.cmake
 mkdir %LIBRARY_PREFIX%\lib\pkgconfig
 for %%F in (openssl libssl libcrypto) DO (
-    copy %RECIPE_DIR%\win_pkgconfig\%%F.pc.in %LIBRARY_PREFIX%\lib\pkgconfig\%%F.pc
-    sed -i "s|@PREFIX@|%LIBRARY_PREFIX:\=/%|g" %LIBRARY_PREFIX%\lib\pkgconfig\%%F.pc
-    sed -i "s|@VERSION@|%PKG_VERSION%|g" %LIBRARY_PREFIX%\lib\pkgconfig\%%F.pc
+    echo prefix=%LIBRARY_PREFIX:\=/% > %%F.pc
+    type %RECIPE_DIR%\win_pkgconfig\%%F.pc.in >> %%F.pc
+    echo Version: %PKG_VERSION% >> %%F.pc
+    copy %%F.pc %LIBRARY_PREFIX%\lib\pkgconfig\%%F.pc
 )
 
 REM Install step

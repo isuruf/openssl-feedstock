@@ -34,7 +34,6 @@ outputs:
     requirements:
       build:
         - {{ compiler('c') }}
-        - m2-sed  # [win]
         - make
         - perl *
       # Empty host section to ensure that this is identified as cb3
