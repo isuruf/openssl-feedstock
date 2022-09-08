@@ -1,3 +1,5 @@
+@echo on
+
 if "%ARCH%"=="32" (
     set OSSL_CONFIGURE=VC-WIN32
 ) ELSE (
