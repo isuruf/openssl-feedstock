@@ -9,7 +9,7 @@ source:
   sha256: 83049d042a260e696f62406ac5c08bf706fd84383f945cf21bd61e9ed95c396e
 
 build:
-  number: 1
+  number: 2
 
 requirements:
   build:
@@ -61,6 +61,8 @@ outputs:
     requirements:
       build:
         - {{ compiler('c') }}
+      run:
+        - {{ pin_subpackage('openssl', exact=True) }}
     test:
       commands:
         - test -f ${PREFIX}/lib/libcrypto.a                   # [unix]
