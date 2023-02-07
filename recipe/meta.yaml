@@ -1,4 +1,4 @@
-{% set version = "3.0.7" %}
+{% set version = "3.0.8" %}
 
 package:
   name: openssl_split
@@ -6,10 +6,10 @@ package:
 
 source:
   url: http://www.openssl.org/source/openssl-{{ version }}.tar.gz
-  sha256: 83049d042a260e696f62406ac5c08bf706fd84383f945cf21bd61e9ed95c396e
+  sha256: 6c13d2bf38fdf31eac3ce2a347073673f5d63263398f1f69d0df4a41253e4b3e
 
 build:
-  number: 2
+  number: 0
 
 requirements:
   build:
@@ -22,7 +22,7 @@ requirements:
 
 outputs:
   - name: openssl
-    script: install_openssl.sh   # [unix]
+    script: install_openssl.sh  # [unix]
     script: install_openssl.bat  # [win]
     build:
       no_link: lib/libcrypto.so.3.0  # [linux]
@@ -56,7 +56,7 @@ outputs:
         - pkg-config --print-errors --exact-version "{{ version }}" openssl
 
   - name: libopenssl-static
-    script: install_libopenssl-static.sh   # [unix]
+    script: install_libopenssl-static.sh  # [unix]
     script: install_libopenssl-static.bat  # [win]
     requirements:
       build:
