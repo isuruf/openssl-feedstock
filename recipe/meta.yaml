@@ -11,7 +11,7 @@ source:
     - 0001-OBJ_nid2obj-Return-UNDEF-object-instead-of-NULL.patch
 
 build:
-  number: 0
+  number: 1
 
 requirements:
   build:
