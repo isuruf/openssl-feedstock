@@ -10,9 +10,11 @@ source:
   patches:
     # backport openssl/openssl#20556 as regression fix; can be dropped for v>3.1.0
     - 0001-OBJ_nid2obj-Return-UNDEF-object-instead-of-NULL.patch
+    # backport openssl/openssl#20613 as regression fix; can be dropped for v>3.1.0
+    - 0002-Fix-some-patches-related-to-error-exiting.patch
 
 build:
-  number: 1
+  number: 2
 
 requirements:
   build:
