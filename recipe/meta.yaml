@@ -1,4 +1,4 @@
-{% set version = "3.1.0" %}
+{% set version = "3.1.1" %}
 
 package:
   name: openssl_split
@@ -6,7 +6,7 @@ package:
 
 source:
   url: http://www.openssl.org/source/openssl-{{ version }}.tar.gz
-  sha256: aaa925ad9828745c4cad9d9efeb273deca820f2cdcf2c3ac7d7c1212b7c497b4
+  sha256: b3aa61334233b852b63ddb048df181177c2c659eb9d4376008118f9c08d07674
   patches:
     # backport openssl/openssl#20556 as regression fix; can be dropped for v>3.1.0
     - patches/0001-OBJ_nid2obj-Return-UNDEF-object-instead-of-NULL-for-.patch
@@ -22,7 +22,7 @@ source:
     # note that fix for CVE-2023-0466 (openssl/openssl#20562) is docs-only
 
 build:
-  number: 3
+  number: 0
 
 requirements:
   build:
