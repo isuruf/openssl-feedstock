@@ -9,7 +9,7 @@ source:
   sha256: b3aa61334233b852b63ddb048df181177c2c659eb9d4376008118f9c08d07674
 
 build:
-  number: 0
+  number: 1
 
 requirements:
   build:
@@ -43,6 +43,12 @@ outputs:
       run:
         - ca-certificates
         - ucrt             # [win]
+      run_constrained:
+        # ensure the solver doesn't run into a situation where it picks old pyopenssl and breaks, see
+        # https://github.com/conda-forge/pyopenssl-feedstock/issues/30; the symbol OpenSSL_add_all_algorithms
+        # is deprecated in OpenSSL and not available by default, it was present in pyopenssl until
+        # https://github.com/pyca/pyopenssl/commit/382e5e04410b8f07383b5fc5244a2d93b07b0baf
+        - pyopenssl >=22.1
     test:
       requires:
         - pkg-config
