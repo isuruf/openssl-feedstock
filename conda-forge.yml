@@ -15,4 +15,4 @@ provider:
   # failing test on aarch in emulation, see #84
   linux_aarch64: travis
   linux_ppc64le: default
-test_on_native_only: true
+test: native_and_emulated
