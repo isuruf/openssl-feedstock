@@ -1,4 +1,4 @@
-{% set version = "3.2.1" %}
+{% set version = "3.3.0" %}
 
 package:
   name: openssl_split
@@ -6,10 +6,10 @@ package:
 
 source:
   url: http://www.openssl.org/source/openssl-{{ version }}.tar.gz
-  sha256: 83c7329fe52c850677d75e5d0b0ca245309b97e8ecbcfdc1dfdc4ab9fac35b39
+  sha256: 53e66b043322a606abf0087e7699a0e033a37fa13feb9742df35c3a33b18fb02
 
 build:
-  number: 1
+  number: 0
 
 requirements:
   build:
