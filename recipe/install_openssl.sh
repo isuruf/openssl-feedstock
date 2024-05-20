@@ -13,7 +13,7 @@ fi
 
 # Make sure ${PREFIX}/ssl/certs directory exists
 # Otherwise SSL_ERROR_SYSCALL is returned instead of SSL_ERROR_SLL
-mkdir ${PREFIX}/ssl/certs
+mkdir -p ${PREFIX}/ssl/certs
 touch ${PREFIX}/ssl/certs/.keep
 
 # remove the static libraries
