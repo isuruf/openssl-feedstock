@@ -18,8 +18,8 @@ for %%F in (openssl libssl libcrypto) DO (
     copy %%F.pc %LIBRARY_PREFIX%\lib\pkgconfig\%%F.pc
 )
 
-mkdir %LIBRARY_PREFIX%\certs
-type NUL > %LIBRARY_PREFIX%\certs\.keep
+mkdir %LIBRARY_PREFIX%\ssl\certs
+type NUL > %LIBRARY_PREFIX%\ssl\certs\.keep
 
 REM Install step
 rem copy out32dll\openssl.exe %PREFIX%\openssl.exe
