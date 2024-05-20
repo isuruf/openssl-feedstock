@@ -14,6 +14,7 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}
+    - {{ stdlib('c') }}
     - nasm               # [win]
     - make               # [unix]
     - perl *
@@ -34,6 +35,7 @@ outputs:
     requirements:
       build:
         - {{ compiler('c') }}
+        - {{ stdlib('c') }}
         - make
         - perl *
       # Empty host section to ensure that this is identified as cb3
@@ -67,6 +69,7 @@ outputs:
     requirements:
       build:
         - {{ compiler('c') }}
+        - {{ stdlib('c') }}
       run:
         - {{ pin_subpackage('openssl', exact=True) }}
     test:
