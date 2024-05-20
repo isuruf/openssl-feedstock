@@ -11,6 +11,11 @@ if [[ ${HOST} =~ .*linux.* ]]; then
   fi
 fi
 
+# Make sure ${PREFIX}/ssl/certs directory exists
+# Otherwise SSL_ERROR_SYSCALL is returned instead of SSL_ERROR_SLL
+mkdir ${PREFIX}/ssl/certs
+touch ${PREFIX}/ssl/certs/.keep
+
 # remove the static libraries
 rm ${PREFIX}/lib/libcrypto.a
 rm ${PREFIX}/lib/libssl.a
